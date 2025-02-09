@@ -1,0 +1,42 @@
+.out-tube {
+    background-color: #00080300;
+
+    color: #ffffff; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    width: 56px;
+    height: 56px;
+    background-image: url("./icons/outtube.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.out-tube:hover {
+    background-color: #0800ff42; /* Blue background */
+
+}
+
+.out-tube-dwn {
+    background-color: #1a172242; /* Green background */
+    color: #ffffff; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    width: 36px;
+    height: 36px;
+    background-image: url("./icons/dwntube.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 5px; /* Space between buttons */
+}
+
+.out-tube-dwn:hover {
+    background-color: #008000;
+}

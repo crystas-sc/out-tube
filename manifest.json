@@ -1,0 +1,29 @@
+{
+
+  "description": "Out-tube adds a button to YouTube videos and playlists that allows users to copy the link and open it with a custom scheme.",
+  "manifest_version": 2,
+  "name": "out-tube",
+  "version": "1.0",
+  "homepage_url": "https://outtube.capps",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+  "web_accessible_resources": [
+    "icons/outtube.svg"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["outtube.js"],
+      "css": ["styles.css"]
+    }
+  ],
+
+"browser_specific_settings": {
+  "gecko": {
+    "id": "test@gmail.com"
+  }
+}
+
+}
