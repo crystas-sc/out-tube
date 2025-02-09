@@ -1,4 +1,4 @@
-function handleClick(link, scheme="outtube") {
+function handleClick(link, scheme = "outtube") {
     let schemeLink = `${scheme}:${link}`;
     navigator.clipboard.writeText(link);
     window.location.href = schemeLink;
@@ -46,7 +46,7 @@ function appendLandingPageThumbnailCopyButton(ele) {
     const parentEle = ele.parentElement;
     if (parentEle.querySelector(".out-tube")) return;
 
-    
+
     parentEle.append(createOuttubeButton());
     parentEle.append(createOuttubeDwnButton());
 }
@@ -74,15 +74,26 @@ const observer = new MutationObserver(mutationList => {
             if (el.tagName === "YTD-PLAYLIST-RENDERER") {
                 appendLandingPageThumbnailCopyButton(el.querySelector("#content > #view-more > a"));
             }
+            if (el.tagName === "YTD-PLAYLIST-PANEL-VIDEO-RENDERER") {
+                const viewFullPlaylistLink = Array.from(el.querySelectorAll("a")).find(a =>
+                    a.textContent.trim().includes("Mix - ")
+                    || a.getAttribute("id") === "video-title"
+                    || a.getAttribute("href").includes("/watch?")
+                    || a.getAttribute("href").includes("/playlist?")
+                );
+                console.log("YTD-PLAYLIST-PANEL-VIDEO-RENDERER", viewFullPlaylistLink, viewFullPlaylistLink.firstElementChild);
+                appendLandingPageThumbnailCopyButton(viewFullPlaylistLink.firstElementChild);
+            }
             if (["YTD-VIDEO-RENDERER", "YTD-PLAYLIST-VIDEO-RENDERER",
-                 "YT-LOCKUP-VIEW-MODEL",
-                 "YTD-PLAYLIST-PANEL-VIDEO-RENDERER",
-                  "YTD-COMPACT-VIDEO-RENDERER"].includes(el.tagName)) {
-                const viewFullPlaylistLink = Array.from(el.querySelectorAll("a")).find(a => a.textContent.trim() === "View full playlist" 
-                || a.textContent.trim().includes("Mix - ")
-                || a.getAttribute("id") === "video-title"
-                || a.getAttribute("href").includes("/watch?")
-             );
+                "YT-LOCKUP-VIEW-MODEL",
+
+                "YTD-COMPACT-VIDEO-RENDERER"].includes(el.tagName)) {
+                const viewFullPlaylistLink = Array.from(el.querySelectorAll("a")).findLast(a =>
+                    a.textContent.trim().includes("Mix - ")
+                    || a.getAttribute("id") === "video-title"
+                    || a.getAttribute("href").includes("/watch?")
+                    || a.getAttribute("href").includes("/playlist?")
+                );
                 appendLandingPageThumbnailCopyButton(viewFullPlaylistLink);
             }
             if (el.tagName === "YTD-COMMENT-SIMPLEBOX-RENDERER") {
