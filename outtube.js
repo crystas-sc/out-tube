@@ -81,7 +81,6 @@ const observer = new MutationObserver(mutationList => {
                     || a.getAttribute("href").includes("/watch?")
                     || a.getAttribute("href").includes("/playlist?")
                 );
-                console.log("YTD-PLAYLIST-PANEL-VIDEO-RENDERER", viewFullPlaylistLink, viewFullPlaylistLink.firstElementChild);
                 appendLandingPageThumbnailCopyButton(viewFullPlaylistLink.firstElementChild);
             }
             if (["YTD-VIDEO-RENDERER", "YTD-PLAYLIST-VIDEO-RENDERER",
@@ -91,9 +90,11 @@ const observer = new MutationObserver(mutationList => {
                 const viewFullPlaylistLink = Array.from(el.querySelectorAll("a")).findLast(a =>
                     a.textContent.trim().includes("Mix - ")
                     || a.getAttribute("id") === "video-title"
-                    || a.getAttribute("href").includes("/watch?")
-                    || a.getAttribute("href").includes("/playlist?")
+                    || a.getAttribute("href")?.includes("/watch?")
+                    || a.getAttribute("href")?.includes("/playlist?")
                 );
+                console.log("YTD-VIDEO-RENDERER", viewFullPlaylistLink, viewFullPlaylistLink.firstElementChild);
+
                 appendLandingPageThumbnailCopyButton(viewFullPlaylistLink);
             }
             if (el.tagName === "YTD-COMMENT-SIMPLEBOX-RENDERER") {
