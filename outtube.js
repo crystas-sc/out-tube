@@ -93,7 +93,7 @@ const observer = new MutationObserver(mutationList => {
                     || a.getAttribute("href")?.includes("/watch?")
                     || a.getAttribute("href")?.includes("/playlist?")
                 );
-                console.log("YTD-VIDEO-RENDERER", viewFullPlaylistLink, viewFullPlaylistLink.firstElementChild);
+                // console.log("YTD-VIDEO-RENDERER", viewFullPlaylistLink, viewFullPlaylistLink.firstElementChild);
 
                 appendLandingPageThumbnailCopyButton(viewFullPlaylistLink);
             }

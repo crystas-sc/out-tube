@@ -32,6 +32,26 @@ This extension adds "Out-tube" and "Download-tube" buttons to YouTube videos and
 3. Click the "Out-tube" button to copy the link and navigate to the `outtube:` scheme.
 4. Click the "Download-tube" button to copy the link and navigate to the `dwntube:` scheme.
 
+## Linux firefox setup
+Edit the handlers.json file within your Firefox user profile directory.
+```
+...
+"schemes": {
+        ...
+        "outtube": {
+            "handlers": [
+                {
+                    "name": "outtube.sh",
+                    "path": "/home/<username>/<outtube.sh>"
+                }
+            ],
+            "action": 2,
+            "ask": true
+        }
+    }
+...
+```
+
 ## Development
 
 ### File Structure
